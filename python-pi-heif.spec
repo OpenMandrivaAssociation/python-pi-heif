@@ -7,6 +7,7 @@ URL:		https://pypi.org/project/pi-heif/
 License:	BSD-3-Clause
 Group:		Development/Python
 BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(libheif)
 #BuildArch:	noarch
 
