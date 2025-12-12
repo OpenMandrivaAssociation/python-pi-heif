@@ -1,6 +1,6 @@
 Name:		python-pi-heif
 Version:	0.16.0
-Release:	1
+Release:	2
 Source0:	https://files.pythonhosted.org/packages/source/p/pi-heif/pi_heif-%{version}.tar.gz
 Summary:	Python interface for libheif library
 URL:		https://pypi.org/project/pi-heif/
