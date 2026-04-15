@@ -1,35 +1,35 @@
+%define module pi-heif
+%define oname pi_heif
+
 Name:		python-pi-heif
-Version:	0.16.0
-Release:	3
-Source0:	https://files.pythonhosted.org/packages/source/p/pi-heif/pi_heif-%{version}.tar.gz
+Version:	1.3.0
+Release:	1
 Summary:	Python interface for libheif library
-URL:		https://pypi.org/project/pi-heif/
 License:	BSD-3-Clause
 Group:		Development/Python
-BuildRequires:	python%{pyver}dist(pip)
+URL:		https://pypi.org/project/pi-heif/
+Source0:	https://files.pythonhosted.org/packages/source/p/%{module}/%{oname}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+
+BuildSystem:	python
 BuildRequires:	pkgconfig(python)
-BuildRequires:	pkgconfig(libheif)
-#BuildArch:	noarch
+# Use unrestricted version of libheif
+BuildRequires:	heif-free-devel
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(pillow)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
 
 %description
 Python interface for libheif library
 
-%prep
-%autosetup -p1 -n pi_heif-%{version}
+%prep -a
+# Remove bundled egg-info
+rm -rf %{oname}.egg-info
 
-# disable Werror flag
-sed -ie "s/, \"-Werror\"//g" setup.py
+%build -p
+export LDFLAGS="%{ldflags} -lpython%{py_ver}"
 
 %files
-%{py_platsitedir}/pi_heif
-%{py_platsitedir}/pi_heif-*.*-info
-%{py_platsitedir}/_pi_heif.*.so
-
-#-----------------------------------------------------------------------
-
-%build
-%py_build
-
-%install
-%py_install
-
+%{py_platsitedir}/_%{oname}.cpython*.so
+%{py_platsitedir}/%{oname}
+%{py_platsitedir}/%{oname}-%{version}.dist-info
