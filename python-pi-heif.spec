@@ -3,7 +3,7 @@
 
 Name:		python-pi-heif
 Version:	1.4.0
-Release:	1
+Release:	2
 Summary:	Python interface for libheif library
 License:	BSD-3-Clause
 Group:		Development/Python
@@ -11,7 +11,7 @@ URL:		https://pypi.org/project/pi-heif/
 Source0:	https://files.pythonhosted.org/packages/source/p/%{module}/%{oname}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildSystem:	python
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 # Use unrestricted version of libheif
 BuildRequires:	heif-free-devel
 BuildRequires:	python%{pyver}dist(pip)
